@@ -1,0 +1,18 @@
+CREATE DATABASE HealthDB;
+GO
+
+USE HealthDB;
+GO
+
+CREATE TABLE HealthReadings (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Temperature FLOAT NOT NULL,
+    HeartRate INT NOT NULL,
+    SpO2 INT NOT NULL,
+    Timestamp DATETIME2 NOT NULL,
+    DeviceId NVARCHAR(50) NULL
+);
+GO
+
+CREATE INDEX IX_Timestamp ON HealthReadings(Timestamp DESC);
+GO

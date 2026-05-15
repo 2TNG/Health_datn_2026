@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthMonitorApp1.Views.LoginPage"
+             BackgroundColor="White"
+             Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="30" VerticalOptions="Center">
+
+            <!-- Logo/Header -->
+            <Frame CornerRadius="30"
+                   BackgroundColor="#4A90E2"
+                   Padding="30"
+                   Margin="0,30,0,30">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="🏥"
+                           FontSize="60"
+                           HorizontalOptions="Center"/>
+                    <Label Text="THEO DÕI SỨC KHỎE"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Center"/>
+                    <Label Text="Đăng nhập để tiếp tục"
+                           FontSize="14"
+                           TextColor="White"
+                           Opacity="0.9"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Form đăng nhập -->
+            <VerticalStackLayout Spacing="15">
+
+                <!-- Username -->
+                <Frame CornerRadius="15"
+                       BackgroundColor="#F5F5F5"
+                       Padding="15">
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="👤" FontSize="20" VerticalOptions="Center"/>
+                        <Entry x:Name="UsernameEntry"
+                               Placeholder="Tên đăng nhập"
+                               PlaceholderColor="#999"
+                               TextColor="#333"
+                               FontSize="16"
+                               ClearButtonVisibility="WhileEditing"/>
+                    </HorizontalStackLayout>
+                </Frame>
+
+                <!-- Password -->
+                <Frame CornerRadius="15"
+                       BackgroundColor="#F5F5F5"
+                       Padding="15">
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="🔒" FontSize="20" VerticalOptions="Center"/>
+                        <Entry x:Name="PasswordEntry"
+                               Placeholder="Mật khẩu"
+                               PlaceholderColor="#999"
+                               TextColor="#333"
+                               FontSize="16"
+                               IsPassword="True"
+                               ClearButtonVisibility="WhileEditing"/>
+                    </HorizontalStackLayout>
+                </Frame>
+
+                <!-- Nút đăng nhập -->
+                <Button x:Name="LoginButton"
+                        Text="ĐĂNG NHẬP"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        BackgroundColor="#4A90E2"
+                        TextColor="White"
+                        CornerRadius="25"
+                        HeightRequest="50"
+                        Clicked="LoginButton_Clicked"/>
+
+                <!-- Loading indicator -->
+                <ActivityIndicator x:Name="LoadingIndicator"
+                                   IsVisible="False"
+                                   Color="#4A90E2"
+                                   HorizontalOptions="Center"/>
+
+                <!-- Link đăng ký -->
+                <HorizontalStackLayout Spacing="5"
+                                       HorizontalOptions="Center"
+                                       Margin="0,15,0,0">
+                    <Label Text="Chưa có tài khoản?"
+                           FontSize="14"
+                           TextColor="#666"/>
+                    <Label x:Name="RegisterLinkLabel"
+                           Text="Đăng ký ngay"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#4A90E2"
+                           TextDecorations="Underline">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="RegisterLink_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <!-- Thông báo lỗi -->
+            <Label x:Name="ErrorLabel"
+                   Text=""
+                   FontSize="13"
+                   TextColor="Red"
+                   HorizontalOptions="Center"
+                   IsVisible="False"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

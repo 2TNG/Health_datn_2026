@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:HealthMonitorApp1.Converters"
+             x:Class="HealthMonitorApp1.Views.HistoryPage"
+             Title="Lịch sử đo"
+             BackgroundColor="#F0F2F5">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Header với bộ lọc -->
+        <VerticalStackLayout Grid.Row="0"
+                             Spacing="10"
+                             Padding="20">
+
+            <Frame CornerRadius="15"
+                   BackgroundColor="#4A90E2"
+                   Padding="15">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="📋 LỊCH SỬ ĐO"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Center"/>
+                    <Label Text="Danh sách các lần đo kèm cảnh báo"
+                           FontSize="14"
+                           TextColor="White"
+                           Opacity="0.9"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Gợi ý trong lịch sử -->
+            <Frame x:Name="HistoryRecommendationFrame"
+       BackgroundColor="#FFF9E6"
+       CornerRadius="10"
+       Padding="10"
+       IsVisible="{Binding HasWarning}">
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="💡"
+               FontSize="14"
+               VerticalOptions="Center"/>
+                    <Label Text="{Binding RecommendationText}"
+               FontSize="12"
+               TextColor="#E67E22"/>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Bộ lọc thời gian - chỉ còn 2 nút -->
+            <Frame CornerRadius="10"
+                   BackgroundColor="White"
+                   Padding="10">
+                <HorizontalStackLayout Spacing="10"
+                                       HorizontalOptions="Center">
+                    <Button x:Name="FilterTodayBtn"
+                            Text="Hôm nay"
+                            BackgroundColor="#4A90E2"
+                            TextColor="White"
+                            CornerRadius="20"
+                            FontSize="14"
+                            HeightRequest="40"
+                            WidthRequest="120"
+                            Clicked="FilterToday_Clicked"/>
+                    <Button x:Name="FilterAllBtn"
+                            Text="Tất cả"
+                            BackgroundColor="#E0E0E0"
+                            TextColor="#666"
+                            CornerRadius="20"
+                            FontSize="14"
+                            HeightRequest="40"
+                            WidthRequest="120"
+                            Clicked="FilterAll_Clicked"/>
+                </HorizontalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+
+        <!-- Danh sách lịch sử -->
+        <CollectionView Grid.Row="1"
+                        x:Name="HistoryCollectionView"
+                        Margin="20,0,20,20">
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="15"
+                           BackgroundColor="White"
+                           Padding="15"
+                           BorderColor="#E0E0E0"
+                           HasShadow="True">
+
+                        <VerticalStackLayout Spacing="10">
+
+                            <!-- Thời gian và icon cảnh báo -->
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding FormattedTime}"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="#333"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"/>
+
+                                <Label Text="{Binding WarningIcon}"
+                                       FontSize="20"
+                                       HorizontalOptions="EndAndExpand"
+                                       VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+
+                            <!-- Các chỉ số -->
+                            <Grid ColumnSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Nhiệt độ -->
+                                <Frame Grid.Column="0"
+                                       BackgroundColor="#FFF1F0"
+                                       CornerRadius="10"
+                                       Padding="10"
+                                       IsVisible="{Binding HasTemperature}">
+                                    <VerticalStackLayout Spacing="5">
+                                        <Label Text="🌡️"
+                                               FontSize="20"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="{Binding FormattedTemperature}"
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               TextColor="#E74C3C"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="Nhiệt độ"
+                                               FontSize="12"
+                                               TextColor="#999"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="{Binding TemperatureWarning}"
+                                               FontSize="11"
+                                               FontAttributes="Bold"
+                                               TextColor="{Binding TemperatureWarningColor}"
+                                               HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+
+                                <!-- Card thông báo không có nhiệt độ -->
+                                <Frame Grid.Column="0"
+                                       BackgroundColor="#F5F5F5"
+                                       CornerRadius="10"
+                                       Padding="10"
+                                       IsVisible="{Binding HasTemperature, Converter={StaticResource InverseBoolConverter}}">
+                                    <VerticalStackLayout Spacing="5">
+                                        <Label Text="🌡️"
+                                               FontSize="20"
+                                               HorizontalOptions="Center"
+                                               Opacity="0.5"/>
+                                        <Label Text="---"
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               TextColor="#999"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="Nhiệt độ"
+                                               FontSize="12"
+                                               TextColor="#999"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="⭕ Không có dữ liệu"
+                                               FontSize="11"
+                                               FontAttributes="Bold"
+                                               TextColor="#999"
+                                               HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+
+                                <!-- Nhịp tim -->
+                                <Frame Grid.Column="1"
+                                       BackgroundColor="#FFF4E5"
+                                       CornerRadius="10"
+                                       Padding="10"
+                                       IsVisible="{Binding HasHeartRate}">
+                                    <VerticalStackLayout Spacing="5">
+                                        <Label Text="❤️"
+                                               FontSize="20"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="{Binding FormattedHeartRate}"
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               TextColor="#E67E22"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="Nhịp tim"
+                                               FontSize="12"
+                                               TextColor="#999"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="{Binding HeartRateWarning}"
+                                               FontSize="11"
+                                               FontAttributes="Bold"
+                                               TextColor="{Binding HeartRateWarningColor}"
+                                               HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+
+                                <!-- Card thông báo không có nhịp tim -->
+                                <Frame Grid.Column="1"
+                                       BackgroundColor="#F5F5F5"
+                                       CornerRadius="10"
+                                       Padding="10"
+                                       IsVisible="{Binding HasHeartRate, Converter={StaticResource InverseBoolConverter}}">
+                                    <VerticalStackLayout Spacing="5">
+                                        <Label Text="❤️"
+                                               FontSize="20"
+                                               HorizontalOptions="Center"
+                                               Opacity="0.5"/>
+                                        <Label Text="---"
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               TextColor="#999"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="Nhịp tim"
+                                               FontSize="12"
+                                               TextColor="#999"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="⭕ Không có dữ liệu"
+                                               FontSize="11"
+                                               FontAttributes="Bold"
+                                               TextColor="#999"
+                                               HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+
+                                <!-- SpO2 -->
+                                <Frame Grid.Column="2"
+                                       BackgroundColor="#E8F4FD"
+                                       CornerRadius="10"
+                                       Padding="10"
+                                       IsVisible="{Binding HasSpO2}">
+                                    <VerticalStackLayout Spacing="5">
+                                        <Label Text="🫁"
+                                               FontSize="20"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="{Binding FormattedSpO2}"
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               TextColor="{Binding SpO2Color}"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="SpO₂"
+                                               FontSize="12"
+                                               TextColor="#999"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="{Binding SpO2Status}"
+                                               FontSize="11"
+                                               FontAttributes="Bold"
+                                               TextColor="{Binding SpO2Color}"
+                                               HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+
+                                <!-- Card thông báo không có SpO2 -->
+                                <Frame Grid.Column="2"
+                                       BackgroundColor="#F5F5F5"
+                                       CornerRadius="10"
+                                       Padding="10"
+                                       IsVisible="{Binding HasSpO2, Converter={StaticResource InverseBoolConverter}}">
+                                    <VerticalStackLayout Spacing="5">
+                                        <Label Text="🫁"
+                                               FontSize="20"
+                                               HorizontalOptions="Center"
+                                               Opacity="0.5"/>
+                                        <Label Text="---"
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               TextColor="#999"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="SpO₂"
+                                               FontSize="12"
+                                               TextColor="#999"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="⭕ Không có dữ liệu"
+                                               FontSize="11"
+                                               FontAttributes="Bold"
+                                               TextColor="#999"
+                                               HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </Grid>
+
+                            <!-- Cảnh báo tổng thể -->
+                            <Frame BackgroundColor="#FFF9E6"
+                                   CornerRadius="10"
+                                   Padding="10"
+                                   IsVisible="{Binding HasAnyData}">
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label Text="{Binding WarningIcon}"
+                                           FontSize="16"
+                                           VerticalOptions="Center"/>
+                                    <Label Text="Thông báo:"
+                                           FontSize="13"
+                                           FontAttributes="Bold"
+                                           TextColor="#E67E22"
+                                           VerticalOptions="Center"/>
+                                    <Label Text="{Binding OverallWarning}"
+                                           FontSize="13"
+                                           TextColor="{Binding OverallWarningColor}"
+                                           VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                            </Frame>
+
+                            <!-- Hiển thị khi hoàn toàn không có dữ liệu -->
+                            <Frame BackgroundColor="#F0F0F0"
+                                   CornerRadius="10"
+                                   Padding="10"
+                                   IsVisible="{Binding HasAnyData, Converter={StaticResource InverseBoolConverter}}">
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label Text="⭕"
+                                           FontSize="16"
+                                           VerticalOptions="Center"/>
+                                    <Label Text="Không có dữ liệu đo trong lần này"
+                                           FontSize="13"
+                                           FontAttributes="Bold"
+                                           TextColor="#999"
+                                           VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                            </Frame>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Hiển thị khi không có dữ liệu -->
+        <VerticalStackLayout Grid.Row="1"
+                             x:Name="EmptyStateLayout"
+                             IsVisible="False"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             Spacing="20">
+
+            <Label Text="📊"
+                   FontSize="72"
+                   HorizontalOptions="Center"/>
+
+            <Label Text="Chưa có dữ liệu"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#999"
+                   HorizontalOptions="Center"/>
+
+            <Label Text="Các lần đo sẽ hiển thị tại đây"
+                   FontSize="16"
+                   TextColor="#CCC"
+                   HorizontalOptions="Center"/>
+
+            <Button Text="Quay lại trang chính"
+                    BackgroundColor="#4A90E2"
+                    TextColor="White"
+                    CornerRadius="25"
+                    Clicked="BackToMainButton_Clicked"
+                    WidthRequest="200"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

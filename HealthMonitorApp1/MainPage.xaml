@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HealthMonitorApp1.MainPage"
+             Title="Theo dõi sức khỏe(creat by Tran Duc Toan 2022604072)"
+             BackgroundColor="#F0F2F5">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+
+            <!-- Header với đồng hồ -->
+            <Frame CornerRadius="15"
+                   BackgroundColor="#4A90E2"
+                   Padding="15"
+                   Margin="0,0,0,10">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="THEO DÕI SỨC KHỎE"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Center"/>
+                    <Label x:Name="CurrentTimeLabel"
+                           Text="--/--/---- --:--:--"
+                           FontSize="16"
+                           TextColor="White"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Card gợi ý sức khỏe -->
+            <Frame x:Name="RecommendationFrame"
+                   CornerRadius="20"
+                   BackgroundColor="#FFF9E6"
+                   Padding="15"
+                   BorderColor="#FFE5B4"
+                   IsVisible="True">
+                <VerticalStackLayout Spacing="10">
+                    <HorizontalStackLayout>
+                        <Label x:Name="RecommendationIcon"
+                               Text="💡"
+                               FontSize="24"
+                               VerticalOptions="Center"/>
+                        <Label Text="GỢI Ý SỨC KHỎE"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="#E67E22"
+                               VerticalOptions="Center"
+                               Margin="10,0,0,0"/>
+                    </HorizontalStackLayout>
+
+                    <Label x:Name="RecommendationTitle"
+                           Text=""
+                           FontSize="15"
+                           FontAttributes="Bold"
+                           TextColor="#333"/>
+
+                    <Label x:Name="RecommendationMessage"
+                           Text=""
+                           FontSize="13"
+                           TextColor="#666"/>
+
+                    <!-- Hiển thị nhiều gợi ý -->
+                    <CollectionView x:Name="RecommendationsCollectionView"
+                                    HeightRequest="150"
+                                    IsVisible="False">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame CornerRadius="10"
+                                       BackgroundColor="#FFFFFF"
+                                       Padding="10"
+                                       Margin="0,5">
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="{Binding Icon}"
+                                               FontSize="20"
+                                               VerticalOptions="Center"/>
+                                        <VerticalStackLayout>
+                                            <Label Text="{Binding Title}"
+                                                   FontSize="14"
+                                                   FontAttributes="Bold"
+                                                   TextColor="{Binding Color}"/>
+                                            <Label Text="{Binding Message}"
+                                                   FontSize="12"
+                                                   TextColor="#666"/>
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Grid 2 cột cho các chỉ số -->
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="15" RowSpacing="15">
+
+                <!-- Card nhiệt độ -->
+                <Frame Grid.Row="0" Grid.Column="0"
+                       CornerRadius="25"
+                       BackgroundColor="White"
+                       Padding="20"
+                       BorderColor="#E0E0E0"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="🌡️"
+                               FontSize="30"
+                               HorizontalOptions="Center"/>
+                        <Label Text="NHIỆT ĐỘ"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#666"
+                               HorizontalOptions="Center"/>
+                        <Label x:Name="TemperatureLabel"
+                               Text="--.- °C"
+                               FontSize="32"
+                               FontAttributes="Bold"
+                               TextColor="#E74C3C"
+                               HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Card nhịp tim -->
+                <Frame Grid.Row="0" Grid.Column="1"
+                       CornerRadius="25"
+                       BackgroundColor="White"
+                       Padding="20"
+                       BorderColor="#E0E0E0"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="❤️"
+                               FontSize="30"
+                               HorizontalOptions="Center"/>
+                        <Label Text="NHỊP TIM"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#666"
+                               HorizontalOptions="Center"/>
+                        <Label x:Name="HeartRateLabel"
+                               Text="-- BPM"
+                               FontSize="32"
+                               FontAttributes="Bold"
+                               TextColor="#E67E22"
+                               HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Card SpO2 -->
+                <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                       CornerRadius="25"
+                       BackgroundColor="White"
+                       Padding="20"
+                       BorderColor="#E0E0E0"
+                       HasShadow="True">
+                    <Grid ColumnDefinitions="Auto,*,Auto">
+                        <Label Grid.Column="0"
+                               Text="🫁"
+                               FontSize="40"
+                               VerticalOptions="Center"
+                               Margin="0,0,15,0"/>
+
+                        <VerticalStackLayout Grid.Column="1"
+                                             Spacing="5">
+                            <Label Text="SpO₂ - NỒNG ĐỘ OXY TRONG MÁU"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#666"/>
+
+                            <HorizontalStackLayout Spacing="15">
+                                <Label x:Name="SpO2Label"
+                                       Text="--%"
+                                       FontSize="36"
+                                       FontAttributes="Bold"
+                                       TextColor="#3498DB"/>
+
+                                <Label x:Name="SpO2StatusLabel"
+                                       Text="Đang đo..."
+                                       FontSize="16"
+                                       VerticalOptions="End"
+                                       Margin="0,0,0,8"/>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+
+                        <BoxView Grid.Column="2"
+                                 x:Name="SpO2ProgressBar"
+                                 WidthRequest="60"
+                                 HeightRequest="60"
+                                 Color="#3498DB"
+                                 CornerRadius="30"
+                                 VerticalOptions="Center"/>
+                    </Grid>
+                </Frame>
+            </Grid>
+
+            <!-- Thông tin chi tiết -->
+            <Frame CornerRadius="20"
+                   BackgroundColor="White"
+                   Padding="15"
+                   BorderColor="#E0E0E0">
+                <VerticalStackLayout Spacing="15">
+
+                    <Label Text="📊 THÔNG SỐ CHI TIẾT"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#666"/>
+
+                    <Grid ColumnDefinitions="Auto,*,Auto,*,Auto" RowDefinitions="Auto,Auto" ColumnSpacing="10" RowSpacing="10">
+
+                        <Label Grid.Row="0" Grid.Column="0" Text="🌡️" FontSize="16"/>
+                        <Label Grid.Row="0" Grid.Column="1" x:Name="DetailTemperature" Text="--.-°C" TextColor="#E74C3C"/>
+
+                        <Label Grid.Row="0" Grid.Column="2" Text="|" TextColor="#DDD"/>
+
+                        <Label Grid.Row="0" Grid.Column="3" Text="❤️" FontSize="16"/>
+                        <Label Grid.Row="0" Grid.Column="4" x:Name="DetailHeartRate" Text="-- BPM" TextColor="#E67E22"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Text="🫁" FontSize="16"/>
+                        <Label Grid.Row="1" Grid.Column="1" x:Name="DetailSpO2" Text="--%" TextColor="#3498DB"/>
+
+                        <Label Grid.Row="1" Grid.Column="2" Text="|" TextColor="#DDD"/>
+
+                        <Label Grid.Row="1" Grid.Column="3" Text="⏱️" FontSize="16"/>
+                        <Label Grid.Row="1" Grid.Column="4" x:Name="DetailLastUpdate" Text="--:--" TextColor="#666"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Nút xem lịch sử -->
+            <Button x:Name="ViewHistoryButton"
+                    Text="XEM LỊCH SỬ ĐO"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    BackgroundColor="#4A90E2"
+                    TextColor="White"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    Clicked="ViewHistoryButton_Clicked"/>
+
+            <!-- Card gợi ý từ admin -->
+            <Frame x:Name="AdminSuggestionFrame"
+                   CornerRadius="15"
+                   BackgroundColor="#F0E6FF"
+                   Padding="15"
+                   IsVisible="False"
+                   Margin="0,10,0,0">
+                <VerticalStackLayout Spacing="8">
+
+                    <HorizontalStackLayout>
+                        <Label Text="📢"
+                               FontSize="18"
+                               VerticalOptions="Center"/>
+                        <Label Text="GỢI Ý TỪ QUẢN TRỊ VIÊN"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#8E44AD"
+                               VerticalOptions="Center"
+                               Margin="5,0,0,0"/>
+                    </HorizontalStackLayout>
+
+                    <CollectionView x:Name="SuggestionsCollectionView"
+                                    HeightRequest="150">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame CornerRadius="10"
+                                       BackgroundColor="White"
+                                       Padding="12"
+                                       Margin="0,5">
+                                    <VerticalStackLayout Spacing="5">
+                                        <Label Text="{Binding Message}"
+                                               FontSize="13"
+                                               TextColor="#333"
+                                               LineBreakMode="WordWrap"/>
+                                        <HorizontalStackLayout Spacing="10">
+                                            <Label Text="👨‍⚕️"
+                                                   FontSize="10"/>
+                                            <Label Text="{Binding AdminName}"
+                                                   FontSize="10"
+                                                   FontAttributes="Bold"
+                                                   TextColor="#8E44AD"/>
+                                            <Label Text="•"
+                                                   FontSize="10"
+                                                   TextColor="#CCC"/>
+                                            <Label Text="{Binding CreatedAt}"
+                                                   FontSize="10"
+                                                   TextColor="#999"/>
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <Label x:Name="NoSuggestionLabel"
+                           Text="Chưa có gợi ý nào từ quản trị viên"
+                           FontSize="12"
+                           TextColor="#999"
+                           HorizontalOptions="Center"
+                           IsVisible="False"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Nút đăng xuất - Đã chuyển xuống cuối cùng -->
+            <Button x:Name="LogoutButton"
+                    Text="ĐĂNG XUẤT"
+                    FontSize="16"
+                    BackgroundColor="#E74C3C"
+                    TextColor="White"
+                    CornerRadius="25"
+                    HeightRequest="45"
+                    Margin="0,10,0,0"
+                    Clicked="LogoutButton_Clicked"/>
+
+            <!-- Copyright - Góc phải -->
+            <AbsoluteLayout>
+                <Label Text="Tran Duc Toan KTMT02(2026) 2022604072"
+                       AbsoluteLayout.LayoutBounds="1, 1, -1, -1"
+                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                       FontSize="10"
+                       TextColor="Gray"
+                       Opacity="0.7"
+                       Margin="0,0,10,5"/>
+            </AbsoluteLayout>
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>
