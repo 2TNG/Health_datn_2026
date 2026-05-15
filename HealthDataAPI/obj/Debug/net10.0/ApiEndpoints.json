@@ -1,0 +1,44 @@
+[
+  {
+    "ContainingType": "HealthDataAPI.Controllers.HealthDataController",
+    "Method": "GetHistory",
+    "RelativePath": "api/HealthData/history",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "limit",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthDataAPI.Controllers.HealthDataController",
+    "Method": "GetLatest",
+    "RelativePath": "api/HealthData/latest",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HealthDataAPI.Controllers.HealthDataController",
+    "Method": "ReceiveData",
+    "RelativePath": "api/HealthData/send",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "HealthDataAPI2.Models.HealthDataDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

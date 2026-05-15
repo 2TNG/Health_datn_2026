@@ -1,0 +1,126 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\datn\\HealthDataAPI2\\HealthDataAPI2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{603D7849-2937-E0C5-CE0B-B28E97B2F647}|HealthDataAPI2.csproj|e:\\datn\\healthdataapi2\\healthdataapi2\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{603D7849-2937-E0C5-CE0B-B28E97B2F647}|HealthDataAPI2.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{603D7849-2937-E0C5-CE0B-B28E97B2F647}|HealthDataAPI2.csproj|e:\\datn\\healthdataapi2\\healthdataapi2\\models\\healthdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{603D7849-2937-E0C5-CE0B-B28E97B2F647}|HealthDataAPI2.csproj|solutionrelative:models\\healthdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{603D7849-2937-E0C5-CE0B-B28E97B2F647}|HealthDataAPI2.csproj|e:\\datn\\healthdataapi2\\healthdataapi2\\models\\db48627context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{603D7849-2937-E0C5-CE0B-B28E97B2F647}|HealthDataAPI2.csproj|solutionrelative:models\\db48627context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{603D7849-2937-E0C5-CE0B-B28E97B2F647}|HealthDataAPI2.csproj|e:\\datn\\healthdataapi2\\healthdataapi2\\controllers\\healthdatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{603D7849-2937-E0C5-CE0B-B28E97B2F647}|HealthDataAPI2.csproj|solutionrelative:controllers\\healthdatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{603D7849-2937-E0C5-CE0B-B28E97B2F647}|HealthDataAPI2.csproj|e:\\datn\\healthdataapi2\\healthdataapi2\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{603D7849-2937-E0C5-CE0B-B28E97B2F647}|HealthDataAPI2.csproj|solutionrelative:data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{603D7849-2937-E0C5-CE0B-B28E97B2F647}|HealthDataAPI2.csproj|e:\\datn\\healthdataapi2\\healthdataapi2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{603D7849-2937-E0C5-CE0B-B28E97B2F647}|HealthDataAPI2.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "User.cs",
+              "DocumentMoniker": "E:\\datn\\HealthDataAPI2\\HealthDataAPI2\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "E:\\datn\\HealthDataAPI2\\HealthDataAPI2\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T14:52:30.447Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HealthDataController.cs",
+              "DocumentMoniker": "E:\\datn\\HealthDataAPI2\\HealthDataAPI2\\Controllers\\HealthDataController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HealthDataController.cs",
+              "ToolTip": "E:\\datn\\HealthDataAPI2\\HealthDataAPI2\\Controllers\\HealthDataController.cs",
+              "RelativeToolTip": "Controllers\\HealthDataController.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAwwEoAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T14:37:19.747Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Db48627Context.cs",
+              "DocumentMoniker": "E:\\datn\\HealthDataAPI2\\HealthDataAPI2\\Models\\Db48627Context.cs",
+              "RelativeDocumentMoniker": "Models\\Db48627Context.cs",
+              "ToolTip": "E:\\datn\\HealthDataAPI2\\HealthDataAPI2\\Models\\Db48627Context.cs",
+              "RelativeToolTip": "Models\\Db48627Context.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAIwAYAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T14:36:31.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HealthData.cs",
+              "DocumentMoniker": "E:\\datn\\HealthDataAPI2\\HealthDataAPI2\\Models\\HealthData.cs",
+              "RelativeDocumentMoniker": "Models\\HealthData.cs",
+              "ToolTip": "E:\\datn\\HealthDataAPI2\\HealthDataAPI2\\Models\\HealthData.cs*",
+              "RelativeToolTip": "Models\\HealthData.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAYwBQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T14:24:18.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "E:\\datn\\HealthDataAPI2\\HealthDataAPI2\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\AppDbContext.cs",
+              "ToolTip": "E:\\datn\\HealthDataAPI2\\HealthDataAPI2\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T14:23:56.879Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\datn\\HealthDataAPI2\\HealthDataAPI2\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\datn\\HealthDataAPI2\\HealthDataAPI2\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T03:01:41.364Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
