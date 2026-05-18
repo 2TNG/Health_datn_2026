@@ -7,7 +7,7 @@ namespace HealthMonitorApp1.Services
     public class AuthService
     {
         private readonly HttpClient _httpClient;
-        private const string BaseUrl = "http://192.168.1.100:5000"; // ⚠️ SỬA IP CỦA WEB API
+        private const string BaseUrl = "http://192.168.1.100:5000";
 
         private User _currentUser;
         private string _sessionToken;
