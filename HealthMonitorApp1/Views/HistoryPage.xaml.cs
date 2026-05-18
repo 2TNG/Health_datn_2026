@@ -8,9 +8,9 @@ namespace HealthMonitorApp1.Views
     {
         private ObservableCollection<HealthData> allHealthDataList;
         private ObservableCollection<HealthData> filteredHealthDataList;
-        private FirebaseService _firebaseService;
+        private HealthApiService _firebaseService;
 
-        public HistoryPage(FirebaseService firebaseService)
+        public HistoryPage(HealthApiService firebaseService)
         {
             InitializeComponent();
             _firebaseService = firebaseService;

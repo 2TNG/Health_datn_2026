@@ -1,21 +1,41 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\tre\\app1\\HealthMonitorApp1\\HealthMonitorApp1\\",
+  "WorkspaceRootPath": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|d:\\tre\\app1\\healthmonitorapp1\\healthmonitorapp1\\views\\admindashboardpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|solutionrelative:views\\admindashboardpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|d:\\tre\\app1\\healthmonitorapp1\\healthmonitorapp1\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|solutionrelative:mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|d:\\tre\\app1\\healthmonitorapp1\\healthmonitorapp1\\mainpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "AbsoluteMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|e:\\datn\\health_datn_2026\\healthmonitorapp1\\mainpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
       "RelativeMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|solutionrelative:mainpage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|d:\\tre\\app1\\healthmonitorapp1\\healthmonitorapp1\\views\\registerpage.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|e:\\datn\\health_datn_2026\\healthmonitorapp1\\models\\healthrecommendation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|solutionrelative:models\\healthrecommendation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|e:\\datn\\health_datn_2026\\healthmonitorapp1\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|solutionrelative:mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|e:\\datn\\health_datn_2026\\healthmonitorapp1\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|solutionrelative:mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|e:\\datn\\health_datn_2026\\healthmonitorapp1\\hs_err_pid6752.log||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|solutionrelative:hs_err_pid6752.log||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|e:\\datn\\health_datn_2026\\healthmonitorapp1\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|solutionrelative:appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|e:\\datn\\health_datn_2026\\healthmonitorapp1\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|e:\\datn\\health_datn_2026\\healthmonitorapp1\\views\\admindashboardpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|solutionrelative:views\\admindashboardpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|e:\\datn\\health_datn_2026\\healthmonitorapp1\\views\\registerpage.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{E7A3D328-BFCE-9B70-03FB-F65BF29557D8}|HealthMonitorApp1.csproj|solutionrelative:views\\registerpage.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
@@ -26,19 +46,97 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HealthRecommendation.cs",
+              "DocumentMoniker": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\Models\\HealthRecommendation.cs",
+              "RelativeDocumentMoniker": "Models\\HealthRecommendation.cs",
+              "ToolTip": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\Models\\HealthRecommendation.cs",
+              "RelativeToolTip": "Models\\HealthRecommendation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-18T05:33:35.991Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "MauiProgram.cs",
+              "ToolTip": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\MauiProgram.cs",
+              "RelativeToolTip": "MauiProgram.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-18T05:28:52.367Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "hs_err_pid6752.log",
+              "DocumentMoniker": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\hs_err_pid6752.log",
+              "RelativeDocumentMoniker": "hs_err_pid6752.log",
+              "ToolTip": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\hs_err_pid6752.log",
+              "RelativeToolTip": "hs_err_pid6752.log",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-05-18T05:28:04.862Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "MainPage.xaml.cs",
+              "DocumentMoniker": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\MainPage.xaml.cs",
+              "RelativeDocumentMoniker": "MainPage.xaml.cs",
+              "ToolTip": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\MainPage.xaml.cs",
+              "RelativeToolTip": "MainPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T16:07:34.043Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppShell.xaml",
+              "DocumentMoniker": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\AppShell.xaml",
+              "RelativeDocumentMoniker": "AppShell.xaml",
+              "ToolTip": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\AppShell.xaml",
+              "RelativeToolTip": "AppShell.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-18T05:28:00.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "App.xaml",
+              "DocumentMoniker": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\App.xaml",
+              "RelativeDocumentMoniker": "App.xaml",
+              "ToolTip": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\App.xaml",
+              "RelativeToolTip": "App.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-18T05:27:56.106Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "AdminDashboardPage.xaml",
-              "DocumentMoniker": "D:\\tre\\app1\\HealthMonitorApp1\\HealthMonitorApp1\\Views\\AdminDashboardPage.xaml",
+              "DocumentMoniker": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\Views\\AdminDashboardPage.xaml",
               "RelativeDocumentMoniker": "Views\\AdminDashboardPage.xaml",
-              "ToolTip": "D:\\tre\\app1\\HealthMonitorApp1\\HealthMonitorApp1\\Views\\AdminDashboardPage.xaml",
+              "ToolTip": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\Views\\AdminDashboardPage.xaml",
               "RelativeToolTip": "Views\\AdminDashboardPage.xaml",
               "ViewState": "AgIAAJsAAAAAAAAAAAAYwLgAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
@@ -47,35 +145,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainPage.xaml.cs",
-              "DocumentMoniker": "D:\\tre\\app1\\HealthMonitorApp1\\HealthMonitorApp1\\MainPage.xaml.cs",
-              "RelativeDocumentMoniker": "MainPage.xaml.cs",
-              "ToolTip": "D:\\tre\\app1\\HealthMonitorApp1\\HealthMonitorApp1\\MainPage.xaml.cs",
-              "RelativeToolTip": "MainPage.xaml.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAA5wBkAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-11T16:07:34.043Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainPage.xaml",
-              "DocumentMoniker": "D:\\tre\\app1\\HealthMonitorApp1\\HealthMonitorApp1\\MainPage.xaml",
-              "RelativeDocumentMoniker": "MainPage.xaml",
-              "ToolTip": "D:\\tre\\app1\\HealthMonitorApp1\\HealthMonitorApp1\\MainPage.xaml",
-              "RelativeToolTip": "MainPage.xaml",
-              "ViewState": "AgIAACYBAAAAAAAAAAAYwEMBAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-11T16:01:40.932Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\MainPage.xaml",
+              "RelativeDocumentMoniker": "MainPage.xaml",
+              "ToolTip": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\MainPage.xaml",
+              "RelativeToolTip": "MainPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMBAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-11T16:01:40.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "RegisterPage.xaml",
-              "DocumentMoniker": "D:\\tre\\app1\\HealthMonitorApp1\\HealthMonitorApp1\\Views\\RegisterPage.xaml",
+              "DocumentMoniker": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\Views\\RegisterPage.xaml",
               "RelativeDocumentMoniker": "Views\\RegisterPage.xaml",
-              "ToolTip": "D:\\tre\\app1\\HealthMonitorApp1\\HealthMonitorApp1\\Views\\RegisterPage.xaml",
+              "ToolTip": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\Views\\RegisterPage.xaml",
               "RelativeToolTip": "Views\\RegisterPage.xaml",
               "ViewState": "AgIAAFkAAAAAAAAAAAAcwH4AAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",

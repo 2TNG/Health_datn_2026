@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\tre\\app1\\HealthMonitorApp1\\HealthMonitorApp1\\HealthMonitorApp1.csproj": {}
+    "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\HealthMonitorApp1.csproj": {}
   },
   "projects": {
-    "D:\\tre\\app1\\HealthMonitorApp1\\HealthMonitorApp1\\HealthMonitorApp1.csproj": {
+    "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\HealthMonitorApp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\tre\\app1\\HealthMonitorApp1\\HealthMonitorApp1\\HealthMonitorApp1.csproj",
+        "projectUniqueName": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\HealthMonitorApp1.csproj",
         "projectName": "HealthMonitorApp1",
-        "projectPath": "D:\\tre\\app1\\HealthMonitorApp1\\HealthMonitorApp1\\HealthMonitorApp1.csproj",
+        "projectPath": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\HealthMonitorApp1.csproj",
         "packagesPath": "C:\\Users\\TRAN DUC TOAN\\.nuget\\packages\\",
-        "outputPath": "D:\\tre\\app1\\HealthMonitorApp1\\HealthMonitorApp1\\obj\\",
+        "outputPath": "E:\\datn\\Health_datn_2026\\HealthMonitorApp1\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [

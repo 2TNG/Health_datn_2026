@@ -6,12 +6,12 @@ namespace HealthMonitorApp1.Views
 {
     public partial class AdminDashboardPage : ContentPage
     {
-        private FirebaseService _firebaseService;
+        private HealthApiService _firebaseService;
         private AuthService _authService;
         private List<User> _allUsers;
         private User _selectedUser;
 
-        public AdminDashboardPage(AuthService authService, FirebaseService firebaseService)
+        public AdminDashboardPage(AuthService authService, HealthApiService firebaseService)
         {
             InitializeComponent();
             _authService = authService;

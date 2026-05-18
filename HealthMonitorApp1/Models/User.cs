@@ -2,19 +2,15 @@
 {
     public class User
     {
-        public string Id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; } = "user"; // "user" hoặc "admin"
+        public int UserId { get; set; }   
+        public string Username { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+        public string Role { get; set; } = "user";
         public DateTime CreatedAt { get; set; }
-        public DateTime LastLogin { get; set; }
+        public DateTime? LastLogin { get; set; }
         public bool IsActive { get; set; } = true;
 
-        // Kiểm tra quyền Admin
+        // Helper property
         public bool IsAdmin => Role == "admin";
-
-        public string FormattedCreatedAt => CreatedAt.ToString("dd/MM/yyyy HH:mm");
-        public string FormattedLastLogin => LastLogin.ToString("dd/MM/yyyy HH:mm");
-        public string DisplayName => Username;
     }
 }

@@ -72,7 +72,7 @@ namespace HealthMonitorApp1.Views
         private void NavigateToMainPage()
         {
             // Tạo FirebaseService với AuthService đã có
-            var firebaseService = new FirebaseService(_authService);
+            var firebaseService = new HealthApiService(_authService);
 
             // Chuyển sang MainPage
             Application.Current.MainPage = new NavigationPage(new MainPage(_authService, firebaseService));

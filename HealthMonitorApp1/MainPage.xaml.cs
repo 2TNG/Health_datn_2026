@@ -2,6 +2,7 @@
 using HealthMonitorApp1.Services;
 using HealthMonitorApp1.Views;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.ObjectModel;
 
 namespace HealthMonitorApp1
 {
@@ -10,27 +11,29 @@ namespace HealthMonitorApp1
         private System.Timers.Timer clockTimer;
         private System.Timers.Timer refreshTimer;
         private System.Timers.Timer sessionCheckTimer;
-        private FirebaseService _firebaseService;
+        private HealthApiService _healthApiService;
         private AuthService _authService;
         private System.Timers.Timer suggestionCheckTimer;
 
-        public MainPage(AuthService authService, FirebaseService firebaseService)
+        public MainPage(AuthService authService, HealthApiService healthApiService)
         {
             InitializeComponent();
             _authService = authService;
-            _firebaseService = firebaseService;
+            _healthApiService = healthApiService;
 
             StartClock();
             StartAutoRefresh();
             StartSessionCheck();
             LoadRealTimeData();
             StartSuggestionCheck();
+
             if (_authService.CurrentUser != null)
             {
                 Title = $"Xin chào, {_authService.CurrentUser.Username}";
             }
         }
 
+        // ===== LOAD ADMIN SUGGESTIONS (Từ Web API) =====
         private async Task LoadAdminSuggestions()
         {
             try
@@ -43,7 +46,8 @@ namespace HealthMonitorApp1
 
                 System.Diagnostics.Debug.WriteLine("=== ĐANG TẢI GỢI Ý TỪ ADMIN ===");
 
-                var suggestions = await _firebaseService.GetSuggestionsForCurrentUser();
+                // Gọi API lấy gợi ý từ server
+                var suggestions = await _healthApiService.GetSuggestionsForCurrentUserAsync();
 
                 System.Diagnostics.Debug.WriteLine($"Nhận được {suggestions?.Count ?? 0} gợi ý");
 
@@ -85,6 +89,7 @@ namespace HealthMonitorApp1
             suggestionCheckTimer.AutoReset = true;
             suggestionCheckTimer.Start();
         }
+
         private void StartClock()
         {
             clockTimer = new System.Timers.Timer(1000);
@@ -144,6 +149,7 @@ namespace HealthMonitorApp1
             }
         }
 
+        // ===== LOAD REAL-TIME DATA TỪ WEB API =====
         private async Task LoadRealTimeData()
         {
             try
@@ -162,45 +168,35 @@ namespace HealthMonitorApp1
                     return;
                 }
 
-                var data = await _firebaseService.GetLatestHealthDataAsync();
+                // Gọi API lấy dữ liệu mới nhất
+                var data = await _healthApiService.GetLatestHealthDataAsync(_authService.CurrentUser.UserId);
 
                 if (data != null)
                 {
                     MainThread.BeginInvokeOnMainThread(() =>
                     {
-                        // Cập nhật dữ liệu cũ (chỉ cập nhật nếu có dữ liệu)
-                        TemperatureLabel.Text = data.HasTemperature ? data.FormattedTemperature : "--- °C";
-                        HeartRateLabel.Text = data.HasHeartRate ? data.FormattedHeartRate : "--- BPM";
-                        SpO2Label.Text = data.HasSpO2 ? data.FormattedSpO2 : "---%";
-                        SpO2StatusLabel.Text = data.HasSpO2 ? data.SpO2Status : "Không có dữ liệu";
+                        // Cập nhật dữ liệu
+                        TemperatureLabel.Text = data.FormattedTemperature;
+                        HeartRateLabel.Text = data.FormattedHeartRate;
+                        SpO2Label.Text = data.FormattedSpO2;
+                        SpO2StatusLabel.Text = data.SpO2Status;
 
-                        DetailTemperature.Text = data.HasTemperature ? $"{data.Temperature:F1}°C" : "---°C";
-                        DetailHeartRate.Text = data.HasHeartRate ? $"{data.HeartRate} BPM" : "--- BPM";
-                        DetailSpO2.Text = data.HasSpO2 ? $"{data.SpO2}%" : "---%";
-                        DetailLastUpdate.Text = data.MeasurementTime.ToString("HH:mm:ss");
+                        DetailTemperature.Text = data.Temperature.ToString("F1") + "°C";
+                        DetailHeartRate.Text = data.HeartRate.ToString() + " BPM";
+                        DetailSpO2.Text = data.SpO2.ToString() + "%";
+                        DetailLastUpdate.Text = data.Timestamp.ToString("HH:mm:ss");
 
-                        if (data.HasSpO2)
-                        {
-                            SpO2ProgressBar.Color = data.SpO2Color;
-                        }
-                        else
-                        {
-                            SpO2ProgressBar.Color = Colors.Gray;
-                        }
+                        // Cập nhật màu progress bar
+                        SpO2ProgressBar.Color = data.SpO2Color;
 
-                        // 🔥 Hiển thị gợi ý - Chỉ truyền dữ liệu có thật
-                        ShowRecommendations(
-                            data.HasTemperature ? data.Temperature : -1,  // Gửi -1 nếu không có dữ liệu
-                            data.HasHeartRate ? data.HeartRate : -1,
-                            data.HasSpO2 ? data.SpO2 : -1
-                        );
+                        // Hiển thị gợi ý
+                        ShowRecommendations(data.Temperature, data.HeartRate, data.SpO2);
                     });
                 }
                 else
                 {
                     MainThread.BeginInvokeOnMainThread(() =>
                     {
-                        // Không có dữ liệu, ẩn gợi ý
                         RecommendationFrame.IsVisible = false;
                     });
                 }
@@ -211,20 +207,18 @@ namespace HealthMonitorApp1
             }
         }
 
-        // 🔥 THÊM: Phương thức hiển thị gợi ý sức khỏe
-        // 🔥 SỬA: Phương thức hiển thị gợi ý sức khỏe - Chỉ hiển thị khi có dữ liệu
+        // ===== HIỂN THỊ GỢI Ý SỨC KHỎE =====
         private void ShowRecommendations(double temperature, int heartRate, int spo2)
         {
             try
             {
-                // Kiểm tra dữ liệu có hợp lệ không
-                bool hasValidTemperature = temperature > 0 && temperature < 50; // Nhiệt độ hợp lệ 0-50°C
-                bool hasValidHeartRate = heartRate > 0 && heartRate < 250; // Nhịp tim hợp lệ 1-250
-                bool hasValidSpO2 = spo2 > 0 && spo2 <= 100; // SpO2 hợp lệ 1-100%
+                bool hasValidTemperature = temperature > 0 && temperature < 50;
+                bool hasValidHeartRate = heartRate > 0 && heartRate < 250;
+                bool hasValidSpO2 = spo2 > 0 && spo2 <= 100;
 
                 var recommendations = new List<RecommendationItem>();
 
-                // 🔥 CHỈ thêm gợi ý nhiệt độ nếu có dữ liệu hợp lệ
+                // Gợi ý nhiệt độ
                 if (hasValidTemperature)
                 {
                     if (temperature > 38.5)
@@ -283,12 +277,8 @@ namespace HealthMonitorApp1
                         });
                     }
                 }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine("Không có dữ liệu nhiệt độ hợp lệ, bỏ qua gợi ý nhiệt độ");
-                }
 
-                // 🔥 CHỈ thêm gợi ý nhịp tim nếu có dữ liệu hợp lệ
+                // Gợi ý nhịp tim
                 if (hasValidHeartRate)
                 {
                     if (heartRate > 120)
@@ -336,12 +326,8 @@ namespace HealthMonitorApp1
                         });
                     }
                 }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine("Không có dữ liệu nhịp tim hợp lệ, bỏ qua gợi ý nhịp tim");
-                }
 
-                // 🔥 CHỈ thêm gợi ý SpO2 nếu có dữ liệu hợp lệ
+                // Gợi ý SpO2
                 if (hasValidSpO2)
                 {
                     if (spo2 < 85)
@@ -389,12 +375,7 @@ namespace HealthMonitorApp1
                         });
                     }
                 }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine("Không có dữ liệu SpO2 hợp lệ, bỏ qua gợi ý SpO2");
-                }
 
-                // 🔥 Nếu không có bất kỳ gợi ý nào (do thiếu dữ liệu), ẩn frame
                 if (recommendations.Count == 0)
                 {
                     MainThread.BeginInvokeOnMainThread(() =>
@@ -404,7 +385,6 @@ namespace HealthMonitorApp1
                     return;
                 }
 
-                // Sắp xếp theo độ ưu tiên và hiển thị gợi ý quan trọng nhất
                 var topRecommendation = recommendations.OrderBy(r => r.Priority).FirstOrDefault();
 
                 if (topRecommendation != null)
@@ -415,7 +395,6 @@ namespace HealthMonitorApp1
                         RecommendationMessage.Text = topRecommendation.Message;
                         RecommendationIcon.Text = topRecommendation.Icon;
 
-                        // Đổi màu frame theo mức độ ưu tiên
                         if (topRecommendation.Priority == 1)
                         {
                             RecommendationFrame.BackgroundColor = Color.FromArgb("#FFE5E5");
@@ -451,7 +430,8 @@ namespace HealthMonitorApp1
 
         private async void ViewHistoryButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new HistoryPage(_firebaseService));
+            // Chuyển sang HistoryPage với HealthApiService
+            await Navigation.PushAsync(new HistoryPage(_healthApiService, _authService));
         }
 
         protected override void OnDisappearing()
@@ -464,13 +444,9 @@ namespace HealthMonitorApp1
             sessionCheckTimer?.Stop();
             sessionCheckTimer?.Dispose();
 
-            // 🔥 Dọn dẹp timer gợi ý
-            if (suggestionCheckTimer != null)
-            {
-                suggestionCheckTimer.Stop();
-                suggestionCheckTimer.Dispose();
-                suggestionCheckTimer = null;
-            }
+            suggestionCheckTimer?.Stop();
+            suggestionCheckTimer?.Dispose();
+            suggestionCheckTimer = null;
         }
 
         private async void LogoutButton_Clicked(object sender, EventArgs e)
@@ -488,6 +464,7 @@ namespace HealthMonitorApp1
             base.OnAppearing();
             await LoadAdminSuggestions();
             System.Diagnostics.Debug.WriteLine("=== MainPage OnAppearing ===");
+
             if (_authService.IsLoggedIn)
             {
                 var isActive = await _authService.IsCurrentUserActive();
@@ -504,6 +481,7 @@ namespace HealthMonitorApp1
                 Title = $"Xin chào, {_authService.CurrentUser.Username}";
             }
 
+            // Thêm nút Admin nếu là Admin
             if (_authService.IsAdmin && !(FindByName("AdminButton") is Button))
             {
                 var adminButton = new Button
@@ -526,17 +504,17 @@ namespace HealthMonitorApp1
 
         private async void AdminButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AdminDashboardPage(_authService, _firebaseService));
+            await Navigation.PushAsync(new AdminDashboardPage(_authService, _healthApiService));
         }
     }
-}
 
-// 🔥 THÊM: Class RecommendationItem ở cuối file hoặc trong file riêng
-public class RecommendationItem
-{
-    public string Icon { get; set; }
-    public string Title { get; set; }
-    public string Message { get; set; }
-    public int Priority { get; set; }
-    public string Color { get; set; }
+    // Model cho gợi ý
+    public class RecommendationItem
+    {
+        public string Icon { get; set; } = string.Empty;
+        public string Title { get; set; } = string.Empty;
+        public string Message { get; set; } = string.Empty;
+        public int Priority { get; set; }
+        public string Color { get; set; } = string.Empty;
+    }
 }

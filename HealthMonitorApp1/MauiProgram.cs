@@ -19,7 +19,7 @@ namespace HealthMonitorApp1
 
             // Đăng ký Services (Singleton để dùng chung)
             builder.Services.AddSingleton<AuthService>();
-            builder.Services.AddSingleton<FirebaseService>();
+            builder.Services.AddSingleton<HealthApiService>();
 
             // Đăng ký Pages (Transient)
             builder.Services.AddTransient<LoginPage>();

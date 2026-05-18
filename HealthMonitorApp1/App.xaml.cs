@@ -15,7 +15,7 @@ namespace HealthMonitorApp1
             // Tạo ServiceProvider
             var services = new ServiceCollection();
             services.AddSingleton<AuthService>();
-            services.AddSingleton<FirebaseService>();
+            services.AddSingleton<HealthApiService>();
             services.AddTransient<LoginPage>();
             services.AddTransient<RegisterPage>();
             services.AddTransient<MainPage>();

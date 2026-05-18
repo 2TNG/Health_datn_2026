@@ -2,26 +2,30 @@
 {
     public class AdminSuggestion
     {
-        public string Id { get; set; } = string.Empty;
-        public string UserId { get; set; } = string.Empty;
+        public string id { get; set; } = string.Empty;
+        public int userId { get; set; }
+        public string username { get; set; } = string.Empty;
+        public string message { get; set; } = string.Empty;
+        public string createdAt { get; set; } = string.Empty;
+        public string adminName { get; set; } = string.Empty;
+    }
+
+    public class UserInfo
+    {
+        public int UserId { get; set; }
         public string Username { get; set; } = string.Empty;
-        public string Message { get; set; } = string.Empty;
+        public string Role { get; set; } = string.Empty;
+        public DateTime? LastLogin { get; set; }
+    }
 
-        // 🔥 SỬA: Đổi từ DateTime sang string
-        public string CreatedAt { get; set; } = string.Empty;
-
-        public bool IsRead { get; set; }
-        public string AdminName { get; set; } = string.Empty;
-
-        // 🔥 THÊM: Property để hiển thị ngày giờ đã format
-        public string FormattedCreatedAt
-        {
-            get
-            {
-                if (DateTime.TryParse(CreatedAt, out var date))
-                    return date.ToString("dd/MM/yyyy HH:mm:ss");
-                return CreatedAt;
-            }
-        }
+    public class AdminStats
+    {
+        public int TotalUsers { get; set; }
+        public int TotalReadings { get; set; }
+        public int ActiveUsersToday { get; set; }
+        public double AvgTemperature { get; set; }
+        public double AvgHeartRate { get; set; }
+        public double AvgSpO2 { get; set; }
+        public DateTime LastUpdate { get; set; }
     }
 }
